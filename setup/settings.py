@@ -134,3 +134,17 @@ AUTH_USER_MODEL = "clientes.Funcionario"
 
 LOGOUT_URL = "logout"
 LOGIN_URL = "login_usuario"
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Host for sending e-mail.
+EMAIL_HOST = 'smtp.gmail.com'
+
+# Port for sending e-mail.
+EMAIL_PORT = 587
+
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = 'dnetochaves@gmail.com'
+EMAIL_HOST_PASSWORD = 'supe pfzx bapr giah'
+EMAIL_USE_TLS = True

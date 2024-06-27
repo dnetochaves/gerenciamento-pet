@@ -43,7 +43,7 @@
               <b>Exames Prescritos:</b> {{ consulta.exames_prescritos }} <br />
             </div>
           </div>
-
+          <a href="{% url "enviar_consulta" consulta.id %}">Enviar por email</a>
           <div class="row no-print">
             <div class="col-xs-12">
               <button type="button" class="btn btn-primary pull-right" onclick="window.print();"><i class="fa fa-print">Imprimir</i></button>
