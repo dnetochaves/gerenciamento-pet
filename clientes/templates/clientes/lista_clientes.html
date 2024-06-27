@@ -1,44 +1,84 @@
-{% extends 'clientes/base.html' %}
+{% extends 'clientes/base2.html' %}
 {% load meus_filtros %}
 {% block title %}
   Cadastro de clientes
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <a href="{% url 'cadastrar_cliente' %}">Cadastrar Cliente</a>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">nome</th>
-        <th scope="col">email</th>
-        <th scope="col">endereco</th>
-        <th scope="col">cpf</th>
-        <th scope="col">data_nascimento</th>
-        <th scope="col">profissao</th>
-        <th scope="col">Ação</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for cliente in clientes %}
-      <tr>
+  <div class="container-fluid px-4">
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Clientes</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Clientes</li>
+      </ol>
+      <div class="row">
+        <div class="col-xl-3 col-md-6">
+          <div class="card bg-primary text-white mb-4">
+            <div class="card-body">Cadastrar Cliente</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a class="small text-white stretched-link" href="{% url 'cadastrar_cliente' %}">Cadastrar</a>
+              <div class="small text-white">
+                <i class="fas fa-angle-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <th scope="row">{{cliente.id}}</th>
-        <td><a href="{% url 'listar_cliente_id' cliente.id %}">{{cliente.nome}}</a></td>
-        <td>{{cliente.email}}</td>
-        <td>{{cliente.endereco.rua}}</td>
-        <td>{{cliente.cpf}}</td>
-        <td>{{cliente.data_nascimento}}</td>
-        <td>{{cliente.profissao}}</td>
-        <td>
-          <a href="{% url 'editar_cliente' cliente.id %}">Editar</a>
-          <a href="{% url 'remover_cliente' cliente.id %}">Remover</a>
-        </td>
+      
        
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Clientes
+        </div>
+        <div class="card-body">
+          <table id="datatablesSimple">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Endereço</th>
+                <th>Cpf</th>
+                <th>Data de Nascimento</th>
+                <th>Profissão</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Endereço</th>
+                <th>Cpf</th>
+                <th>Data de Nascimento</th>
+                <th>Profissão</th>
+                <th>Ação</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for cliente in clientes %}
+                <tr>
+                  <td>{{ cliente.nome }}</td>
+                  <td>{{ cliente.email }}</td>
+                  <td>{{ cliente.endereco.rua }}</td>
+                  <td>{{ cliente.cpf }}</td>
+                  <td>{{ cliente.data_nascimento }}</td>
+                  <td>{{ cliente.profissao }}</td>
+                  <td>
+                    <a href="{% url 'editar_cliente' cliente.id %}">Editar</a>
+                    <a href="{% url 'remover_cliente' cliente.id %}">Remover</a>
+                    <a href="{% url 'listar_cliente_id' cliente.id %}">Detalhes</a>
+                    <a href="{% url 'cadastrar_pet' cliente.id %}">Cadastrar Pet</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+   
+  </div>
 {% endblock %}

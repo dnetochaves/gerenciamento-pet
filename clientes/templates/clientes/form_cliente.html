@@ -1,76 +1,61 @@
-{% extends 'clientes/base.html' %}
+{% extends 'clientes/base2.html' %}
 {% load meus_filtros %}
 {% block title %}
   Cadastro de clientes
 {% endblock %}
 
 {% block content %}
-  <form action="" method="post">
-    {% csrf_token %}
-    <div class="container">
-      <div class="card">
-        <h2>Cadastro de Cliente</h2>
-        <div class="card-body">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nome</label>
-            {{ form_cliente.nome.errors }}
-            {{ form_cliente.nome|addclass:'form-control' }}
-          </div>
-          <hr />
-
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">data_nascimento</label>
-            {{ form_cliente.data_nascimento.errors }}
-            {{ form_cliente.data_nascimento|addclass:'form-control' }}
-          </div>
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">email</label>
-            {{ form_cliente.email.errors }}
-            {{ form_cliente.email|addclass:'form-control' }}
-          </div>
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">cpf</label>
-            {{ form_cliente.cpf.errors }}
-            {{ form_cliente.cpf|addclass:'form-control' }}
-          </div>
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">profissao</label>
-            {{ form_cliente.profissao.errors }}
-            {{ form_cliente.profissao|addclass:'form-control' }}
-          </div>
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">endereco</label>
-            {{ form_endereco.estado.errors }}
-            {{ form_endereco.estado|addclass:'form-control' }}
-          </div>
-
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">cidade</label>
-            {{ form_endereco.cidade.errors }}
-            {{ form_endereco.cidade|addclass:'form-control' }}
-          </div>
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">estado</label>
-            {{ form_endereco.estado.errors }}
-            {{ form_endereco.estado|addclass:'form-control' }}
-          </div>
-          <hr />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">rua</label>
-            {{ form_endereco.rua.errors }}
-            {{ form_endereco.rua|addclass:'form-control' }}
-          </div>
-          <hr />
+  <div class="card">
+    <div class="card-body">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Nome</label>
+          {{ form_cliente.nome|addclass:'form-control' }}
         </div>
-      </div>
-
-      <input type="submit" class="btn btn-primary" name="Cadastrar" />
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">data_nascimento</label>
+          {{ form_cliente.data_nascimento.errors }}
+          {{ form_cliente.data_nascimento|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">email</label>
+          {{ form_cliente.email.errors }}
+          {{ form_cliente.email|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">cpf</label>
+          {{ form_cliente.cpf.errors }}
+          {{ form_cliente.cpf|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">profissao</label>
+          {{ form_cliente.profissao.errors }}
+          {{ form_cliente.profissao|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">endereco</label>
+          {{ form_endereco.estado.errors }}
+          {{ form_endereco.estado|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">cidade</label>
+          {{ form_endereco.cidade.errors }}
+          {{ form_endereco.cidade|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">estado</label>
+          {{ form_endereco.estado.errors }}
+          {{ form_endereco.estado|addclass:'form-control' }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">rua</label>
+          {{ form_endereco.rua.errors }}
+          {{ form_endereco.rua|addclass:'form-control' }}
+        </div>
+        <hr>
+        <input type="submit" class="btn btn-primary" name="Cadastrar" />
+      </form>
     </div>
-  </form>
+  </div>
 {% endblock %}

@@ -8,7 +8,7 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 
 
-@user_passes_test(lambda u: u.cargo == 2)
+@user_passes_test(lambda u: u.cargo == 1)
 def inserir_consulta(request, id):
     if request.method == "POST":
         form_consulta = consulta_forms.ConsultaPetForm(request.POST)

@@ -1,33 +1,37 @@
-{% extends 'clientes/base.html' %}
+{% extends 'clientes/base2.html' %}
 {% load meus_filtros %}
 {% block title %}
   Cadastro de clientes
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="card">
-      <div class="card-header">Pet</div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ pet.nome }}</li>
-        <li class="list-group-item">{{ pet.get_categoria_display }}</li>
-        <li class="list-group-item">{{ pet.nascimento }}</li>
-        <li class="list-group-item">{{ pet.get_cor_display }}</li>
-      </ul>
-    </div>
-    <hr />
-    <div class="card">
-      <div class="card-header">Pet</div>
-      <ul class="list-group list-group-flush">
-        {% for consulta in consultas %}
-          <li class="list-group-item">{{ consulta.data }}</li>
-          <li class="list-group-item">{{ consulta.pet.nome }} realizou nova consulta</li>
-          <li class="list-group-item">{{ consulta.motivo_consulta }}</li>
-          <li class="list-group-item">
-            <a class="btn btn-primary btn-xs" href="{% url 'listar_consulta_id' consulta.id %}">Visualizar consulta</a>
-          </li>
-        {% endfor %}
-      </ul>
+  <div class="card">
+    <div class="card-body">
+      <div class="container">
+        <div class="card">
+          <div class="card-header">Pet</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ pet.nome }}</li>
+            <li class="list-group-item">{{ pet.get_categoria_display }}</li>
+            <li class="list-group-item">{{ pet.nascimento }}</li>
+            <li class="list-group-item">{{ pet.get_cor_display }}</li>
+          </ul>
+        </div>
+        <hr />
+        <div class="card">
+          <div class="card-header">Consultas</div>
+          <ul class="list-group list-group-flush">
+            {% for consulta in consultas %}
+              <li class="list-group-item">{{ consulta.data }}</li>
+              <li class="list-group-item">{{ consulta.pet.nome }} realizou nova consulta</li>
+              <li class="list-group-item">{{ consulta.motivo_consulta }}</li>
+              <li class="list-group-item">
+                <a class="btn btn-primary btn-xs" href="{% url 'listar_consulta_id' consulta.id %}">Visualizar consulta</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}

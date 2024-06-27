@@ -1,24 +1,28 @@
-{% extends 'clientes/base.html' %}
+{% extends 'clientes/base2.html' %}
 {% load meus_filtros %}
 {% block title %}
   Exclussão de clientes
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <h5>Nome: {{cliente.nome}}</h5>
-            <h5>Profissão: {{cliente.profissao}}</h5>
-            <h5>Data de Nascimento: {{cliente.data_nascimento}}</h5>
-            <h5>Email: {{cliente.email}}</h5>
-            <h5>CPF: {{cliente.cpf}}</h5>
-    
+  <div class="card">
+    <div class="card-body">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h5>Nome: {{ cliente.nome }}</h5>
+            <h5>Profissão: {{ cliente.profissao }}</h5>
+            <h5>Data de Nascimento: {{ cliente.data_nascimento }}</h5>
+            <h5>Email: {{ cliente.email }}</h5>
+            <h5>CPF: {{ cliente.cpf }}</h5>
+
             <form method="POST">
-                {% csrf_token %}
-                <button class="btn btn-danger" type="submit">Remover</button>
+              {% csrf_token %}
+              <button class="btn btn-danger" type="submit">Remover</button>
             </form>
+          </div>
         </div>
       </div>
-</div>
+    </div>
+  </div>
 {% endblock %}

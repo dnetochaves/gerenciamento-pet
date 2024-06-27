@@ -1,50 +1,36 @@
-{% extends 'clientes/base.html' %}
+{% extends 'clientes/base2.html' %}
 {% load meus_filtros %}
 {% block title %}
   Lista de
 {% endblock %}
 
 {% block content %}
+  <div class="card">
+    <div class="card-body">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">id - {{ cliente.nome }}</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ cliente.email }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <table class="table">
-      <h3>Cliente</h3>
       <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">nome</th>
-          <th scope="col">email</th>
-          <th scope="col">endereco</th>
-          <th scope="col">cpf</th>
-          <th scope="col">data_nascimento</th>
-          <th scope="col">profissao</th>
-          <th scope="col">Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">{{ cliente.id }}</th>
-          <td>{{ cliente.nome }}</td>
-          <td>{{ cliente.email }}</td>
-          <td>{{ cliente.endereco.rua }}</td>
-          <td>{{ cliente.cpf }}</td>
-          <td>{{ cliente.data_nascimento }}</td>
-          <td>{{ cliente.profissao }}</td>
-          <td>
-            <a href="http://">Editar</a>
-            <a href="http://">Remover</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <hr />
-    <table class="table">
-      <thead>
-        <h3>Pet</h3>
+        <h3>Seus Pets</h3>
         <tr>
           <th scope="col">id</th>
           <th scope="col">nome</th>
           <th scope="col">categoria</th>
           <th scope="col">cor</th>
+          <th scope="col">Ação</th>
         </tr>
       </thead>
       <tbody>
@@ -52,18 +38,21 @@
           <tr>
             <th scope="row">{{ pet.id }}</th>
             <td>
-              <a href="{% url 'listar_pet_id' pet.id %}">{{ pet.nome }}</a>
+              {{ pet.nome }}
             </td>
             <td>{{ pet.get_categoria_display }}</td>
             <td>{{ pet.get_cor_display }}</td>
+            <td>
+              <a class="btn btn-primary" href="{% url 'listar_pet_id' pet.id %}">Consultas</a>
+              <a class="btn btn-primary" href="{% url 'cadastrar_consulta' pet.id %}">Cadastrar Consulta</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
-    <hr />
     <table class="table">
       <thead>
-        <h3>Consultas Pet</h3>
+        <h3>Consultas dos Pets</h3>
         <tr>
           <th scope="col">id</th>
           <th scope="col">pet</th>
@@ -72,6 +61,7 @@
           <th scope="col">medicamento_atual</th>
           <th scope="col">medicamentos_prescritos</th>
           <th scope="col">exames_prescritos</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -79,13 +69,14 @@
           <tr>
             <th scope="row">{{ consulta.id }}</th>
             <td>
-              <a href="{% url 'listar_consulta_id' cliente.id %}">{{ consulta.pet.nome }}</a>
+              {{ consulta.pet.nome }}
             </td>
             <td>{{ consulta.motivo_consulta }}</td>
             <td>{{ consulta.peso_atual }}</td>
             <td>{{ consulta.medicamento_atual }}</td>
             <td>{{ consulta.medicamentos_prescritos }}</td>
             <td>{{ consulta.exames_prescritos }}</td>
+            <td><a class="btn btn-primary" href="{% url 'listar_consulta_id' consulta.id %}">Ver</a></td>
           </tr>
         {% endfor %}
       </tbody>
